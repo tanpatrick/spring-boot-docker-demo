@@ -5,6 +5,7 @@ import java.util.List;
 import lombok.Data;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -22,9 +23,8 @@ public class Application {
     }
 
     @RequestMapping("/names")
+    @CrossOrigin(origins = {"*"})
     public List<Person> getNames() {
-        System.out.println("GET NAMES ....");
-        
         return Arrays.asList(
                 new Person("John", "Auckland"),
                 new Person("Emma", "Bay of Blenty"),
