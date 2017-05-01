@@ -1,4 +1,4 @@
-package tanpatrick.apps.spring.boot.docker.demo;
+package tanpatrick.apps.service.person;
 
 import java.util.Arrays;
 import java.util.List;
@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 /**
  *
- * @author patricktan
+ * @author Patrick Tan <tanpatrickjoseph@gmail.com>
  */
 @SpringBootApplication
 @RestController
