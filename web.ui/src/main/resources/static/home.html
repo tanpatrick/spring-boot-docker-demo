@@ -1,0 +1,38 @@
+<html>
+    <head>
+        <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
+        <title>Web UI</title>
+    </head>
+    <body ng-app="myApp">
+        <h1>PERSONS</h1>
+        
+        <div ng-controller="MyCtrl as ctrl" ng-init="ctrl.getNames()">
+            <ul>
+                <li ng-repeat="name in ctrl.names">
+                    {{name.name}}, {{name.region}}
+                </li> 
+            </ul>
+        </div>
+        
+        <script>
+            var app = angular.module('myApp', []);
+            app.controller('MyCtrl', function($http) {
+                var _this = this;
+                _this.getNames = getNames;
+                
+                function getNames() {
+                    $http.get('http://localhost:8081/api/names')
+                        .then(onSuccess, onError);
+                }
+                
+                function onSuccess(response) {
+                    _this.names = response.data;
+                }
+                
+                function onError() {
+                    alert('Oops! Unable to retrieve data');
+                }
+            });
+        </script>
+    </body>
+</html>
